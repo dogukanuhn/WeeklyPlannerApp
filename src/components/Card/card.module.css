@@ -1,0 +1,22 @@
+.card {
+  background-color: white;
+  box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
+  border-radius: 5px;
+  padding: 140px 80px 20px;
+}
+.card .title {
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.card .body span {
+  font-size: 15px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+}
+.card .warning {
+  padding-top: 180px;
+}

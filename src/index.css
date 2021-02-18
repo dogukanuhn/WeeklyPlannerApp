@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&Prompt:wght@300;400&display=swap');
+@import './bootstrap-reboot.min.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +8,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F6F6F6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+*{
+  letter-spacing: 1px;
+}
+.warning-title{
+  font-weight: 500;
+  display:block ;
+}
+.warning-content{
+  font-weight: 400;
+  display:block ;
 }

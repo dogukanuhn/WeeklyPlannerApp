@@ -1,0 +1,10 @@
+.homeCard {
+  text-align: center;
+}
+.homeCard .content {
+  padding: 0 10px;
+}
+.registerText {
+  margin-top: 15px;
+  display: block;
+}

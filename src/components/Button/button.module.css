@@ -1,0 +1,11 @@
+.blackButton{
+    transition: all .3s ease-in-out;
+    width: 100%;
+    background: rgb(29 29 29);
+    background: radial-gradient(circle,rgb(29 29 29) 0%,rgb(27 27 27) 100%);
+    border: none;
+    font-weight: 500;
+    color: #fff;
+    padding: 15px 0;
+    border-radius: 5px;
+}
