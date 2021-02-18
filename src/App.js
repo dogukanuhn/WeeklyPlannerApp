@@ -1,11 +1,35 @@
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from 'pages/Home'
+import Dashboard from 'pages/Dashboard'
+
 import Layout from 'components/Layout'
 import Auth from 'pages/Auth'
+import PrivateRoute from 'PrivateRoute'
+import jwtDecode from 'jwt-decode'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from 'redux/actions/authAction'
+import { setAuthorizationToken } from 'helpers/setAuthorizationToken'
 
 function App() {
+  const user = useSelector((state) => state['auth'].user)
+
+  const dispatch = useDispatch()
+
+  const jwtToken = localStorage.getItem('jwtToken')
+
+  const userInfo = (state) => {
+    if (jwtToken) {
+      setAuthorizationToken(jwtToken)
+      return jwtDecode(jwtToken)
+    } else return user
+  }
+
+  useEffect(() => {
+    dispatch(setUser(userInfo(user)))
+  }, [])
+
   return (
     <Router>
       <Layout>
@@ -15,6 +39,7 @@ function App() {
           <Route exact path="/" component={Home} />
 
           <Route path="/auth/:email/:accessGuid" component={Auth} />
+          <PrivateRoute path="/dash" component={Dashboard} />
         </Switch>
       </Layout>
     </Router>

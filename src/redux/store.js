@@ -1,8 +1,10 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-import { RootReducer, UserReducer } from './reducers'
+import { applyMiddleware, createStore } from 'redux'
+import { RootReducer } from './reducers'
+import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
 
-import { composeWithDevTools } from 'redux-devtools-extension'
+const loggerMiddleware = createLogger()
 export const store = createStore(
-  combineReducers({ RootReducer, UserReducer }),
-  composeWithDevTools()
+  RootReducer,
+  applyMiddleware(loggerMiddleware, thunkMiddleware)
 )

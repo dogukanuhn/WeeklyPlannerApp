@@ -1,17 +1,9 @@
-const initialState = {}
+import { combineReducers } from 'redux'
 
-export default function reducer(state = initialState, outAction) {
-  const { type, action } = outAction
+import authReducer from './authReducer'
 
-  switch (type) {
-    case 'AddToCart':
-      return {
-        ...state,
-        cart: [...state.cart, action],
-        cartTotalItem: state.cartTotalItem + 1
-      }
+let rootReducer = combineReducers({
+  auth: authReducer
+})
 
-    default:
-      return state
-  }
-}
+export default rootReducer
