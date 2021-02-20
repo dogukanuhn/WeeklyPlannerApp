@@ -1,9 +1,4 @@
-import {
-  AUTH_ERROR,
-  AUTH_SUCCESS,
-  LOGOUT,
-  SET_USER
-} from '../actions/authAction'
+import { AUTH_SUCCESS, LOGOUT, SET_USER } from '../actions/authAction'
 
 const initState = {
   user: null,
@@ -24,13 +19,6 @@ const authReducer = (state = initState, action) => {
         user: action.user,
         isAuthenticated: true
       }
-    case AUTH_ERROR:
-      return {
-        ...state,
-        user: null,
-        isAuthenticated: false
-      }
-
     case LOGOUT:
       return {
         ...state,
