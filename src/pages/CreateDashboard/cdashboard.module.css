@@ -1,0 +1,10 @@
+.tableCard {
+  padding: 20px;
+}
+.teamCard {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.teamCardWarning {
+  padding-top: 15px !important;
+}
