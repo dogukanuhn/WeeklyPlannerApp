@@ -6,11 +6,12 @@ import styles from './auth.module.css'
 
 import { useForm } from 'react-hook-form'
 import { useHistory, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../../redux/actions/authAction'
 export default function Index() {
   const { register, handleSubmit } = useForm()
   const dispatch = useDispatch()
+  const authState = useSelector((state) => state['auth'])
   const history = useHistory()
   // @ts-ignore
   const { email, accessGuid } = useParams()
@@ -22,8 +23,16 @@ export default function Index() {
       accessGuid: accessGuid
     }
 
-    dispatch(auth(authData))
-    history.push(`/dash`)
+    // @ts-ignore
+    dispatch(auth(authData)).then((x) => {
+      if (!x.error) {
+        x.status === 0
+          ? history.push('/create-dashboard')
+          : history.push('/dash')
+      } else {
+        console.log(x.errorMessage)
+      }
+    })
   }
 
   // console.log(watch())

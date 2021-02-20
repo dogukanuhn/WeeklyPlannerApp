@@ -9,25 +9,23 @@ import Auth from 'pages/Auth'
 import PrivateRoute from 'PrivateRoute'
 import jwtDecode from 'jwt-decode'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from 'redux/actions/authAction'
+import { logout, setUser } from 'redux/actions/authAction'
 import { setAuthorizationToken } from 'helpers/setAuthorizationToken'
+import CreateDashboard from 'pages/CreateDashboard'
 
 function App() {
   const user = useSelector((state) => state['auth'].user)
 
   const dispatch = useDispatch()
-
   const jwtToken = localStorage.getItem('jwtToken')
-
-  const userInfo = (state) => {
-    if (jwtToken) {
+  useEffect(() => {
+    console.log(jwtToken)
+    const userInfo = (state) => {
       setAuthorizationToken(jwtToken)
       return jwtDecode(jwtToken)
-    } else return user
-  }
+    }
 
-  useEffect(() => {
-    dispatch(setUser(userInfo(user)))
+    dispatch(jwtToken ? setUser(userInfo(user)) : logout())
   }, [])
 
   return (
@@ -40,6 +38,7 @@ function App() {
 
           <Route path="/auth/:email/:accessGuid" component={Auth} />
           <PrivateRoute path="/dash" component={Dashboard} />
+          <PrivateRoute path="/create-dashboard" component={CreateDashboard} />
         </Switch>
       </Layout>
     </Router>

@@ -1,16 +1,13 @@
 import {
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
   AUTH_ERROR,
   AUTH_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  SET_USER
 } from '../actions/authAction'
 
 const initState = {
   user: null,
-  isAuthenticated: false,
-  error: false,
-  errorMessage: ''
+  isAuthenticated: false
 }
 
 const authReducer = (state = initState, action) => {
@@ -21,15 +18,24 @@ const authReducer = (state = initState, action) => {
         user: action.user,
         isAuthenticated: true
       }
+    case SET_USER:
+      return {
+        ...state,
+        user: action.user,
+        isAuthenticated: true
+      }
     case AUTH_ERROR:
       return {
         ...state,
-        user: '',
+        user: null,
         isAuthenticated: false
       }
+
     case LOGOUT:
       return {
-        user: ''
+        ...state,
+        user: null,
+        isAuthenticated: false
       }
     default:
       return state
