@@ -1,0 +1,26 @@
+.dashboard {
+  padding: 20px;
+}
+.teamInput {
+  width: auto;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+.addTeamButton {
+  width: auto;
+  border-left: none;
+  padding: 12px;
+  border-radius: 0 5px 5px 0;
+}
+.teams button {
+  width: auto;
+  padding: 15px;
+  background: white;
+  color: black;
+  box-shadow: 3px 5px 10px 0 rgb(230 230 230);
+  margin-right: 10px;
+}
+.selectedTab {
+  background: green !important;
+  color: white !important;
+}

@@ -42,7 +42,7 @@ export default function Index() {
   console.log(watch())
 
   return (
-    <div>
+    <div className="center-main">
       <Card className={styles.homeCard}>
         <Card.Title>
           Ekibinle birlikte projelerini takip etmek istiyorsan bize katıl.
@@ -110,7 +110,7 @@ export default function Index() {
             </div>
           )}
         </Card.Body>
-        <Card.Warning>
+        <Card.Warning className="">
           <span className="warning-title">ÖNEMLİ NOT</span>
           <span className="warning-content">
             Eğer kayıtlı bir şirket panosu varsa ona dahil edilirsiniz. Yoksa

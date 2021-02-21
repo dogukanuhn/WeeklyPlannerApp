@@ -26,9 +26,7 @@ export default function Index() {
     // @ts-ignore
     dispatch(auth(authData)).then((x) => {
       if (!x.error) {
-        x.status === 0
-          ? history.push('/create-dashboard')
-          : history.push('/dash')
+        history.push('/dash')
       } else {
         console.log(x.errorMessage)
       }
@@ -38,7 +36,7 @@ export default function Index() {
   // console.log(watch())
 
   return (
-    <div>
+    <div className="center-main">
       <Card className={styles.homeCard}>
         <Card.Title>
           Ekibinle birlikte projelerini takip etmek istiyorsan bize katıl.
@@ -59,7 +57,7 @@ export default function Index() {
             </div>
           </div>
         </Card.Body>
-        <Card.Warning>
+        <Card.Warning className="">
           <span className="warning-title">ÖNEMLİ NOT</span>
           <span className="warning-content">
             Eğer kayıtlı bir şirket panosu varsa ona dahil edilirsiniz. Yoksa

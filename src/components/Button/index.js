@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './button.module.css'
-export default function index({ children, ...props }) {
+import cn from 'classnames'
+export default function index({ className, children, ...props }) {
   return (
-    <button className={styles.blackButton} {...props}>
+    <button className={cn(styles.blackButton, className)} {...props}>
       {children}
     </button>
   )

@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import Home from 'pages/Home'
 import Dashboard from 'pages/Dashboard'
 
@@ -8,24 +8,22 @@ import Layout from 'components/Layout'
 import Auth from 'pages/Auth'
 import PrivateRoute from 'PrivateRoute'
 import jwtDecode from 'jwt-decode'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logout, setUser } from 'redux/actions/authAction'
 import { setAuthorizationToken } from 'helpers/setAuthorizationToken'
-import CreateDashboard from 'pages/CreateDashboard'
 
 function App() {
-  const user = useSelector((state) => state['auth'].user)
-
   const dispatch = useDispatch()
+
   const jwtToken = localStorage.getItem('jwtToken')
-  useEffect(() => {
-    console.log(jwtToken)
-    const userInfo = (state) => {
+
+  useLayoutEffect(() => {
+    const userInfo = () => {
       setAuthorizationToken(jwtToken)
       return jwtDecode(jwtToken)
     }
 
-    dispatch(jwtToken ? setUser(userInfo(user)) : logout())
+    dispatch(jwtToken ? setUser(userInfo()) : logout())
   }, [])
 
   return (
@@ -38,7 +36,6 @@ function App() {
 
           <Route path="/auth/:email/:accessGuid" component={Auth} />
           <PrivateRoute path="/dash" component={Dashboard} />
-          <PrivateRoute path="/create-dashboard" component={CreateDashboard} />
         </Switch>
       </Layout>
     </Router>
