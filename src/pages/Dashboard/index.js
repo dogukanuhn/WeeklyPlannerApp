@@ -8,14 +8,16 @@ import { useSelector } from 'react-redux'
 import styles from './dash.module.css'
 export default function Index() {
   const user = useSelector((state) => state['auth'].user)
+
   const [selectedTeam, setSelectedTeam] = useState(0)
-  const [boards, setBoards] = useState(null)
+
+  const [boards, setBoards] = useState([])
 
   const { register, handleSubmit } = useForm()
 
   useEffect(() => {
-    axios.get('https://localhost:5001/api/Dashboard').then((x) => {
-      if (!x.data.hasError) setBoards(x.data.boards)
+    axios.get('https://localhost:5001/api/Dashboard/teams').then((x) => {
+      if (!x.data.hasError) setBoards(x.data.teams)
     })
   }, [])
 
@@ -28,7 +30,6 @@ export default function Index() {
       })
       .then((x) => {
         if (!x.data.hasError) {
-          setBoards([...boards, x.data])
         }
       })
   }
@@ -55,15 +56,14 @@ export default function Index() {
                   className={selectedTeam === i && styles.selectedTab}
                   onClick={(x) => setSelectedTeam(i)}
                 >
-                  {x.team}
+                  {x}
                 </Button>
               )
             })}
         </div>
       </div>
-      <div className="board">
-        <Board />
-      </div>
+
+      <Board team={boards[selectedTeam]} />
     </div>
   )
 }

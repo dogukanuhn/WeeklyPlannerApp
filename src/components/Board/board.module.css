@@ -1,0 +1,29 @@
+.board {
+  margin-top: 30px;
+  display: flex;
+}
+.board .table {
+  width: auto;
+  flex: 0 0 20%;
+  margin-right: 20px;
+  background-color: #6d919e;
+  box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px;
+}
+.board .tableName {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: v;
+}
+
+.board .table li {
+  margin-top: 10px;
+  padding: 10px 5px;
+  background-color: white;
+  box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
+  border-radius: 5px;
+}
