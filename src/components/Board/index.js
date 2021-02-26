@@ -131,6 +131,19 @@ export default function Index({ team }) {
       })
   }
 
+  const removeTable = (data) => {
+    axios
+      .post('https://localhost:5001/api/Dashboard/DeleteTable', {
+        team: team,
+        tableName: data
+      })
+      .then((x) => {
+        if (!x.data.hasError) {
+          getDashboard()
+        }
+      })
+  }
+
   return (
     <div>
       <div className={styles.form}>
@@ -171,6 +184,15 @@ export default function Index({ team }) {
                       {...provided.droppableProps}
                       ref={provided.innerRef}
                     >
+                      <div className={styles.remove}>
+                        <span
+                          onClick={() => {
+                            removeTable(x['tableName'])
+                          }}
+                        >
+                          X
+                        </span>
+                      </div>
                       <div className={styles.top}>
                         <span className={styles.tableName}>{x.tableName}</span>
 
@@ -236,7 +258,7 @@ export const CreateAssignmentComp = ({
       <Input
         name="content"
         className={styles.input}
-        placeholder="Başlık"
+        placeholder="İçerik"
         referance={register({ required: true })}
       />
       <Button>Gönder</Button>

@@ -21,8 +21,10 @@
 }
 
 .board .table li {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
-  padding: 10px 5px;
+  padding: 10px;
   background-color: white;
   box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
   border-radius: 5px;
@@ -91,4 +93,11 @@
   border-left: none;
   padding: 12px;
   border-radius: 0 5px 5px 0;
+}
+.remove {
+  text-align: right;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 15px;
 }
