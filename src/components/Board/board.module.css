@@ -1,6 +1,7 @@
 .board {
   margin-top: 30px;
   display: flex;
+  flex-wrap: wrap;
 }
 .board .table {
   width: auto;
@@ -17,7 +18,6 @@
   font-weight: 500;
   font-size: 20px;
   margin-bottom: 10px;
-  display: v;
 }
 
 .board .table li {
@@ -26,4 +26,69 @@
   background-color: white;
   box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
   border-radius: 5px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addButton {
+  width: auto;
+  background: white;
+  color: black;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+.modal {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+.modalOverlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modalContent {
+  background: white;
+  padding: 35px 50px;
+  box-shadow: 3px 5px 12px 0 rgba(142, 142, 142, 0.16);
+  border-radius: 5px;
+  z-index: 2;
+}
+.modalTitle {
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.input {
+  display: block;
+  width: 350px;
+}
+.form {
+  display: inline-block;
+  margin-top: 20px;
+}
+.teamInput {
+  width: auto;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+}
+.addTeamButton {
+  width: auto;
+  border-left: none;
+  padding: 12px;
+  border-radius: 0 5px 5px 0;
 }

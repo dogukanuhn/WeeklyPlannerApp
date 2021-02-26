@@ -15,10 +15,13 @@ export default function Index() {
 
   const { register, handleSubmit } = useForm()
 
-  useEffect(() => {
+  const getTeams = () => {
     axios.get('https://localhost:5001/api/Dashboard/teams').then((x) => {
       if (!x.data.hasError) setBoards(x.data.teams)
     })
+  }
+  useEffect(() => {
+    getTeams()
   }, [])
 
   const createDashboard = (data) => {
@@ -30,6 +33,7 @@ export default function Index() {
       })
       .then((x) => {
         if (!x.data.hasError) {
+          getTeams()
         }
       })
   }
@@ -38,7 +42,7 @@ export default function Index() {
     <div className={styles.dashboard}>
       <div className={styles.team}>
         <div>
-          <form onSubmit={handleSubmit(createDashboard)}>
+          <form id="1" onSubmit={handleSubmit(createDashboard)}>
             <Input
               className={styles.teamInput}
               name="teamName"
@@ -48,6 +52,7 @@ export default function Index() {
             <Button className={styles.addTeamButton}>Takım Ekle</Button>
           </form>
         </div>
+        <div></div>
         <div className={styles.teams}>
           {boards &&
             boards.map((x, i) => {
