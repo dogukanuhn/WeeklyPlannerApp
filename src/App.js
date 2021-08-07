@@ -9,7 +9,7 @@ import Auth from 'pages/Auth'
 import PrivateRoute from 'PrivateRoute'
 import jwtDecode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
-import { logout, setUser } from 'redux/actions/authAction'
+import { logout, authSuccess } from 'rtk/auth/authSlice'
 import { setAuthorizationToken } from 'helpers/setAuthorizationToken'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       return jwtDecode(jwtToken)
     }
 
-    dispatch(jwtToken ? setUser(userInfo()) : logout())
+    dispatch(jwtToken ? authSuccess(userInfo()) : logout())
   }, [])
 
   return (

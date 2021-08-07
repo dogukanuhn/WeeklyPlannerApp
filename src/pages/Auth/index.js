@@ -3,15 +3,15 @@ import Card from 'components/Card'
 import Input from 'components/Input'
 import React from 'react'
 import styles from './auth.module.css'
-
+import { authUser } from './../../rtk/auth/authSlice'
 import { useForm } from 'react-hook-form'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { auth } from '../../redux/actions/authAction'
+
 export default function Index() {
   const { register, handleSubmit } = useForm()
   const dispatch = useDispatch()
-  const authState = useSelector((state) => state['auth'])
+
   const history = useHistory()
   // @ts-ignore
   const { email, accessGuid } = useParams()
@@ -24,7 +24,7 @@ export default function Index() {
     }
 
     // @ts-ignore
-    dispatch(auth(authData)).then((x) => {
+    dispatch(authUser(authData)).then((x) => {
       if (!x.error) {
         history.push('/dash')
       } else {
